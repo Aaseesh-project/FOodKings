@@ -1,7 +1,5 @@
 <section>
     <form action="/auth/resetPassword" method="post">
-        <h1><%= token%></h1>
-        <h1><%= id %></h1>
     <input type="hidden" name="userId" value="<%= JSON.stringify(id) %>">
     <input type="hidden" name="token" value="<%= JSON.stringify(token) %>">
     <input type="password" name="password" id="" placeholder="New password">
