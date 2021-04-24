@@ -1,4 +1,5 @@
 const homeController = require('../app/http/controllers/homeController')
+const forgotController = require('../app/http/controllers/forgotController')
 const joinController = require('../app/http/controllers/joinController')
 const offersController = require('../app/http/controllers/offersController')
 const recipeController = require('../app/http/controllers/recipeController')
@@ -14,6 +15,14 @@ const statusController = require('../app/http/controllers/admin/statusController
 const guest = require('../app/http/middlewares/guest')
 const auth = require('../app/http/middlewares/auth')
 const admin = require('../app/http/middlewares/admin')
+
+
+const {
+    signUpController,
+    resetPasswordRequestController,
+    resetPasswordController,
+} = require("../app/http/controllers/auth.controller");
+  
 
 function initRoutes(app) {
     app.get('/', homeController().index)
@@ -54,6 +63,16 @@ function initRoutes(app) {
     // Admin routes
     app.get('/admin/orders', admin, adminOrderController().index)
     app.post('/admin/order/status', admin, statusController().update)
+
+
+    //password reset
+    // app.post("/auth/signup", signUpController);
+    app.get('/forgotpassword',forgotController().index)
+    app.get('/passwordReset/:token/:id',forgotController().show)
+    app.post("/auth/requestResetPassword", resetPasswordRequestController);
+    app.post("/auth/resetPassword", resetPasswordController);
+
+
 }
 
 module.exports = initRoutes
