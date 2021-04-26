@@ -1,11 +1,14 @@
  import axios from 'axios'
  import Noty from 'noty'
  import { initAdmin } from './admin'
+
+ import { initAllOrders } from './orderDetails'
  import moment from 'moment'
  import { initStripe } from './stripe'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
+initAllOrders()
 
 function updateCart(food) {
     axios.post('/update-cart', food).then(res => {

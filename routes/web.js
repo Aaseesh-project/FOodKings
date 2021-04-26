@@ -11,6 +11,13 @@ const orderController = require('../app/http/controllers/customers/orderControll
 const adminOrderController = require('../app/http/controllers/admin/orderController')
 const statusController = require('../app/http/controllers/admin/statusController')
 
+//all data
+const alljoinController = require('../app/http/controllers/alljoinController')
+const alloffersController = require('../app/http/controllers/alloffersController')
+const allrecipeController = require('../app/http/controllers/allrecipeController')
+const allfeedbackController = require('../app/http/controllers/allfeedbackController')
+const allorderController = require('../app/http/controllers/allorderController')
+
 // Middlewares 
 const guest = require('../app/http/middlewares/guest')
 const auth = require('../app/http/middlewares/auth')
@@ -29,6 +36,12 @@ function initRoutes(app) {
 
     app.get('/join-Our-Chain', joinController().index)
     app.post('/join-Our-Chain', joinController().postJoin)
+
+    app.get('/alljoin', auth,  alljoinController().index)
+    app.get('/allfeedback', auth, allfeedbackController().index)
+    app.get('/allorder', auth, allorderController().index)
+    app.get('/allrecipe', auth, allrecipeController().index)
+    app.get('/alloffers', auth, alloffersController().index)
 
     app.get('/feedback',feedbackController().index)
     app.post('/feedback',feedbackController().postFeedback)
@@ -51,7 +64,7 @@ function initRoutes(app) {
     app.post('/update-cart', cartController().update)
 
     // Customer routes
-    app.post('/orders', auth, orderController().store)
+    app.post('/orders', auth,  orderController().store)
     app.post('/clear-cart', orderController().clear)
     
     app.get('/customer/orders', auth, orderController().index)

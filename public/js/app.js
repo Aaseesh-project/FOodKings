@@ -27968,9 +27968,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _stripe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stripe */ "./resources/js/stripe.js");
+/* harmony import */ var _orderDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./orderDetails */ "./resources/js/orderDetails.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _stripe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stripe */ "./resources/js/stripe.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -27982,8 +27983,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
+Object(_orderDetails__WEBPACK_IMPORTED_MODULE_3__["initAllOrders"])();
 
 function updateCart(food) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', food).then(function (res) {
@@ -28043,7 +28046,7 @@ function updateStatus(order) {
 
     if (dataProp === order.status) {
       stepCompleted = false;
-      time.innerText = moment__WEBPACK_IMPORTED_MODULE_3___default()(order.updatedAt).format('hh:mm A');
+      time.innerText = moment__WEBPACK_IMPORTED_MODULE_4___default()(order.updatedAt).format('hh:mm A');
       status.appendChild(time);
 
       if (status.nextElementSibling) {
@@ -28054,7 +28057,7 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
-Object(_stripe__WEBPACK_IMPORTED_MODULE_4__["initStripe"])(); // Socket
+Object(_stripe__WEBPACK_IMPORTED_MODULE_5__["initStripe"])(); // Socket
 
 var socket = io(); // Join
 
@@ -28072,7 +28075,7 @@ if (adminAreaPath.includes('admin')) {
 socket.on('orderUpdated', function (data) {
   var updatedOrder = _objectSpread({}, order);
 
-  updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_3___default()().format();
+  updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_4___default()().format();
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
   new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
@@ -28082,6 +28085,58 @@ socket.on('orderUpdated', function (data) {
     progressBar: false
   }).show();
 });
+
+/***/ }),
+
+/***/ "./resources/js/orderDetails.js":
+/*!**************************************!*\
+  !*** ./resources/js/orderDetails.js ***!
+  \**************************************/
+/*! exports provided: initAllOrders */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAllOrders", function() { return initAllOrders; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function initAllOrders() {
+  var orderTableBody = document.querySelector('#AllordersTableBody');
+  var AllOrders = document.querySelector('#AllOrders');
+  var orders = AllOrders ? AllOrders.value : null;
+  orders = JSON.parse(orders);
+  var markup; // console.log(orders)
+
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/allorder', {
+    headers: {
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  }).then(function (res) {
+    orders = orders; // console.log(orders)
+
+    markup = generateMarkup(orders);
+    orderTableBody.innerHTML = markup;
+  })["catch"](function (err) {
+    console.log(err);
+  });
+
+  function renderItems(items) {
+    var parsedItems = Object.values(items);
+    return parsedItems.map(function (menuItem) {
+      return "<p>".concat(menuItem.item.name, " - ").concat(menuItem.qty, " pcs </p>");
+    }).join('');
+  }
+
+  function generateMarkup(orders) {
+    return orders.map(function (order) {
+      return "\n                <tr>\n                <td class=\"border px-4 py-2 text-green-900\">\n                    <p>".concat(order._id, "</p>\n                </td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">").concat(order.customerId, "</td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">").concat(order.phone, "</td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">").concat(order.address, "</td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">\n                \n                <span class=\"relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight\">\n                <span aria-hidden class=\"absolute inset-0 bg-green-200 opacity-50 rounded-full\"></span>\n                <span class=\"relative\">\n                ").concat(order.status, "\n                </span></span>\n                </td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">\n                    ").concat(order.paymentStatus ? 'Paid' : 'COD', "\n                </td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">\n                    ").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("DD:MM:YY h:mm a"), "\n                </td>\n                <td class=\"px-5 py-5 border-b border-gray-200 bg-white text-sm\">\n                    <div class=\"text-gray-900 whitespace-pre\">").concat(renderItems(order.items), "</div>\n                </td>\n            </tr>\n        ");
+    }).join('');
+  }
+}
 
 /***/ }),
 
