@@ -1,14 +1,14 @@
 # FOodKings DBMS-Project
 # TEAM- 4
 TEAM MEMBERS AND THEIR CONTRIBUTIONS:  
-S Venkata Ramana- 19bcs096 (Frontend & Backend)  
-M. Sai Madhav Reddy -19BCS074 (Frontend & Backend)  
-E. Harshith Kumar Yadav -19bcs041 (Frontend & PaymentGateway)  
-CH. Aaseesh sumanth- 19bcs033 (Frontend & UI design)  
-D. Abhinav- 19bcs040 (Frontend & UI design)  
-B. Neelakanteswar -19bcs020 (Frontend)  
-B. Vijay nayak-19BCS017 (Frontend)  
-K.R.R. Yatheeswar - 19bcs045 (Frontend)  
+S Venkata Ramana- 19bcs096 (Backend & Databases & Project modelling)  
+M. Sai Madhav Reddy -19BCS074 (Frontend & Backend & API integration)  
+D. Abhinav- 19bcs040 (layout (HTML) & UI design)  
+CH. Aaseesh sumanth- 19bcs033 (UI & graphics design)  
+E. Harshith Kumar Yadav -19bcs041 (Payment Gateway & User Authentication)  
+K.R.R. Yatheeswar - 19bcs045 (Frontend design (HTML, CSS))  
+B. Vijay nayak-19BCS017 (Testing & debugging)  
+B. Neelakanteswar -19bcs020 (Frontend & Deploying)  
 
 website address is "https://foodkings.herokuapp.com/"  
 
