@@ -1,5 +1,14 @@
 # FOodKings DBMS-Project
-# FOodKings
+# TEAM- 4
+TEAM MEMBERS AND THEIR CONTRIBUTIONS: 
+S Venkata Ramana- 19bcs096 (Frontend & Backend) 
+M. Sai Madhav Reddy -19BCS074 (Frontend & Backend) 
+E. Harshith Kumar Yadav -19bcs041 (Frontend & PaymentGateway) 
+CH. Aaseesh sumanth- 19bcs033 (Frontend & UI design) 
+D. Abhinav- 19bcs040 (Frontend & UI design) 
+B. Neelakanteswar -19bcs020 (Frontend) 
+B. Vijay nayak-19BCS017 (Frontend) 
+K.R.R. Yatheeswar - 19bcs045 (Frontend)
 
 website address is "https://foodkings.herokuapp.com/"
 
@@ -13,16 +22,15 @@ and database will be in mongo cloud in one of our teammates account.
 
 
 
-#If the project need to be run locally:
+# If the project need to be run locally:
 
-1)
- Go to the terminal in the Visual Studio code and type:
+1) Go to the terminal in the Visual Studio code and type:
 
  "yarn install"
 
 this will download all the node modules 
 
-2). Add Menu.json into MongoDB Atlas import the data into database called "foodkings" (create it)
+2) Add Menu.json into MongoDB Atlas import the data into database called "foodkings" (create it)
 and collection called "menus".
 
 
