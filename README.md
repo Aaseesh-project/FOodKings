@@ -7,7 +7,7 @@ D. Abhinav- 19bcs040 (layout (HTML) & UI design)
 CH. Aaseesh sumanth- 19bcs033 (UI & graphics design)  
 E. Harshith Kumar Yadav -19bcs041 (Payment Gateway & User Authentication)  
 K.R.R. Yatheeswar - 19bcs045 (Frontend design (HTML, CSS))  
-B. Vijay nayak-19BCS017 (Testing & debugging)  
+B. Vijay Kumar-19BCS017 (Testing & debugging)  
 B. Neelakanteswar -19bcs020 (Frontend & Deploying)  
 
 website address is "https://foodkings.herokuapp.com/"  
