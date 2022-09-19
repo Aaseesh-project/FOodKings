@@ -1,14 +1,14 @@
 # FOodKings DBMS-Project
 # TEAM- 4
 TEAM MEMBERS AND THEIR CONTRIBUTIONS:  
-S Venkata Ramana- 19bcs096
-M. Sai Madhav Reddy -19BCS074
-D. Abhinav- 19bcs040
-CH. Aaseesh sumanth- 19bcs033
-E. Harshith Kumar Yadav -19bcs041
-K.R.R. Yatheeswar - 19bcs045
-B. Vijay Kumar-19BCS017
-B. Neelakanteswar -19bcs020
+S Venkata Ramana- 19bcs096  
+M. Sai Madhav Reddy -19BCS074  
+D. Abhinav- 19bcs040  
+CH. Aaseesh sumanth- 19bcs033  
+E. Harshith Kumar Yadav -19bcs041  
+K.R.R. Yatheeswar - 19bcs045  
+B. Vijay Kumar-19BCS017  
+B. Neelakanteswar -19bcs020  
 
 website address is "https://foodkings.herokuapp.com/"  
 
