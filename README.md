@@ -1,4 +1,4 @@
-# FOodKings DBMS-Project
+# FOodKings Full Stack (DBMS- course) Project
 # TEAM- 4
 TEAM MEMBERS AND THEIR CONTRIBUTIONS:  
 S Venkata Ramana- 19bcs096  
